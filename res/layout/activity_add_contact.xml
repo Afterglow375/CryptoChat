@@ -1,0 +1,253 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".AddContactActivity" >
+
+    <TextView
+        android:id="@+id/createdKeyword3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/createdKeyword2"
+        android:layout_below="@+id/createdKeyword2"
+        android:layout_marginTop="30dp"
+        android:text="@string/sample" />
+
+    <TextView
+        android:id="@+id/createdKeyword2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/createdKeyword1"
+        android:layout_below="@+id/createdKeyword1"
+        android:layout_marginTop="30dp"
+        android:text="@string/sample" />
+
+    <TextView
+        android:id="@+id/createdKeyword4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/createdKeyword3"
+        android:layout_below="@+id/createdKeyword3"
+        android:layout_marginTop="30dp"
+        android:text="@string/sample" />
+
+    <TextView
+        android:id="@+id/createdKeyword5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/createdKeyword4"
+        android:layout_below="@+id/createdKeyword4"
+        android:layout_marginTop="30dp"
+        android:text="@string/sample" />
+
+    <EditText
+        android:id="@+id/enterKeyword3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/createdKeyword3"
+        android:layout_alignBottom="@+id/createdKeyword3"
+        android:layout_alignLeft="@+id/enterKeyword4"
+        android:layout_alignRight="@+id/enterKeyword4"
+        android:ems="10"
+        android:inputType="text" />
+
+    <EditText
+        android:inputType="text"
+        android:id="@+id/enterKeyword4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/createdKeyword4"
+        android:layout_alignBottom="@+id/createdKeyword4"
+        android:layout_alignLeft="@+id/enterKeyword2"
+        android:ems="10" />
+
+    <EditText
+        android:inputType="text"
+        android:id="@+id/enterKeyword5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/createdKeyword5"
+        android:layout_alignBottom="@+id/createdKeyword5"
+        android:layout_alignLeft="@+id/enterKeyword4"
+        android:ems="10" />
+
+    <EditText
+        android:id="@+id/edit_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/email"
+        android:layout_alignBottom="@+id/email"
+        android:layout_alignRight="@+id/enterKeyword1"
+        android:layout_toRightOf="@+id/name"
+        android:ems="10"
+        android:inputType="textEmailAddress" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/createdKeyword2"
+        android:layout_alignLeft="@+id/email"
+        android:text="@string/one" />
+
+    <EditText
+        android:id="@+id/enterKeyword1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/createdKeyword1"
+        android:layout_alignBottom="@+id/createdKeyword1"
+        android:layout_toRightOf="@+id/TextView01"
+        android:ems="10"
+        android:inputType="text" />
+
+    <TextView
+        android:id="@+id/TextView01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/createdKeyword2"
+        android:layout_centerHorizontal="true"
+        android:text="@string/one" />
+
+    <EditText
+        android:id="@+id/enterKeyword2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/createdKeyword2"
+        android:layout_alignBottom="@+id/createdKeyword2"
+        android:layout_alignLeft="@+id/enterKeyword1"
+        android:layout_alignRight="@+id/enterKeyword1"
+        android:ems="10"
+        android:inputType="text" />
+
+    <TextView
+        android:id="@+id/createdKeyword1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edit_email"
+        android:layout_marginTop="45dp"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@+id/textView1"
+        android:text="@string/sample" />
+
+    <TextView
+        android:id="@+id/TextView02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/createdKeyword2"
+        android:layout_alignBottom="@+id/createdKeyword2"
+        android:layout_alignLeft="@+id/email"
+        android:text="@string/two" />
+
+    <TextView
+        android:id="@+id/TextView03"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/createdKeyword4"
+        android:layout_alignLeft="@+id/textView1"
+        android:text="@string/three" />
+
+    <TextView
+        android:id="@+id/TextView04"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/createdKeyword5"
+        android:layout_alignLeft="@+id/TextView03"
+        android:text="@string/four" />
+
+    <TextView
+        android:id="@+id/TextView05"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/createdKeyword5"
+        android:layout_alignBottom="@+id/createdKeyword5"
+        android:layout_alignLeft="@+id/TextView03"
+        android:text="@string/five" />
+
+    <TextView
+        android:id="@+id/TextView06"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/enterKeyword5"
+        android:layout_alignBottom="@+id/enterKeyword5"
+        android:layout_toLeftOf="@+id/enterKeyword5"
+        android:text="@string/five" />
+
+    <TextView
+        android:id="@+id/TextView07"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/createdKeyword5"
+        android:layout_alignLeft="@+id/TextView01"
+        android:text="@string/four" />
+
+    <TextView
+        android:id="@+id/TextView08"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/createdKeyword4"
+        android:layout_toLeftOf="@+id/enterKeyword3"
+        android:text="@string/three" />
+
+    <TextView
+        android:id="@+id/TextView09"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/createdKeyword3"
+        android:layout_toLeftOf="@+id/enterKeyword2"
+        android:text="@string/two" />
+
+    <EditText
+        android:id="@+id/edit_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/name"
+        android:layout_alignBottom="@+id/name"
+        android:layout_alignLeft="@+id/edit_email"
+        android:layout_alignRight="@+id/enterKeyword1"
+        android:ems="10"
+        android:inputType="textPersonName" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/name"
+        android:layout_below="@+id/name"
+        android:layout_marginTop="25dp"
+        android:text="@string/email" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="22dp"
+        android:text="@string/name" />
+
+    <Button
+        android:id="@+id/newKeywords"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/startConversation"
+        android:layout_alignBottom="@+id/startConversation"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/startConversation"
+        android:text="@string/new_keywords" />
+
+    <Button
+        android:id="@+id/startConversation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/TextView06"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/enterKeyword5"
+        android:text="@string/start_conv_button" />
+
+</RelativeLayout>
