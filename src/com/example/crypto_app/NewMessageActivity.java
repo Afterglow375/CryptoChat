@@ -1,6 +1,7 @@
 package com.example.crypto_app;
 
 import android.os.Bundle;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.view.Menu;
 import android.view.View;
@@ -13,8 +14,10 @@ public class NewMessageActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_new_message);
 		addListenerOnButton();
-//		ActionBar actionBar = getActionBar();
-//		actionBar.setHomeButtonEnabled(true);
+		
+		// Add "Up" navigation
+		ActionBar actionBar = getActionBar();
+	    actionBar.setDisplayHomeAsUpEnabled(true);
 	}
 	
 	public void addListenerOnButton() {

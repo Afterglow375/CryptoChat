@@ -4,8 +4,6 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,8 +21,9 @@ public class AddContactActivity extends Activity {
 		setContentView(R.layout.activity_add_contact);
 		
 		addListenerOnButton();
+		// Add "Up" navigation
 		ActionBar actionBar = getActionBar();
-		actionBar.setHomeButtonEnabled(true);
+		actionBar.setDisplayHomeAsUpEnabled(true);
 	}
 	
 	public void addListenerOnButton() {
@@ -66,20 +65,4 @@ public class AddContactActivity extends Activity {
             }
         });
 	}
-	
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.add_contact, menu);
-		return true;
-	}
-	
-	// Add the back button the action bar
-	@Override
-	public boolean onOptionsItemSelected(MenuItem menuItem)
-	{       
-	    onBackPressed();
-	    return true;
-	}
-
 }

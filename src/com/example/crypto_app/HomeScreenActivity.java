@@ -14,7 +14,6 @@ public class HomeScreenActivity extends ListActivity {
 	private HomeScreenAdapter adapter;
 	private static final int SELECT_CONVERSATION = 0;
 	private static final int ADD_CONTACT = 1;
-	static final String[] SAMPLE = new String[] {"Sample contact/conversation"};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
