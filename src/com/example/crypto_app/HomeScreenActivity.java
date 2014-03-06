@@ -3,7 +3,6 @@ package com.example.crypto_app;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -68,10 +67,15 @@ public class HomeScreenActivity extends ListActivity {
 	}
 	
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.home_screen, menu);
-		return true;
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (requestCode == ADD_CONTACT) {
+			if (resultCode == RESULT_OK) {
+				adapter.notifyDataSetChanged();
+				Toast.makeText(getApplicationContext(), "New contact added.", Toast.LENGTH_SHORT).show();
+			}
+		}
+		else if (requestCode == SELECT_CONVERSATION) {
+				adapter.notifyDataSetChanged();
+		}
 	}
-
 }
