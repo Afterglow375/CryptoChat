@@ -1,8 +1,10 @@
 package com.example.crypto_app;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -14,8 +16,8 @@ public class AddContactActivity extends Activity {
 		setContentView(R.layout.activity_add_contact);
 		
 		addListenerOnButton();
-//		ActionBar actionBar = getActionBar();
-//		actionBar.setHomeButtonEnabled(true);
+		ActionBar actionBar = getActionBar();
+		actionBar.setHomeButtonEnabled(true);
 	}
 	
 	public void addListenerOnButton() {
@@ -36,12 +38,12 @@ public class AddContactActivity extends Activity {
 		return true;
 	}
 	
-//	// Add the back button the action bar
-//	@Override
-//	public boolean onOptionsItemSelected(MenuItem menuItem)
-//	{       
-//	    onBackPressed();
-//	    return true;
-//	}
+	// Add the back button the action bar
+	@Override
+	public boolean onOptionsItemSelected(MenuItem menuItem)
+	{       
+	    onBackPressed();
+	    return true;
+	}
 
 }

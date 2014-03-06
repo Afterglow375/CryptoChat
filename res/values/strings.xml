@@ -23,5 +23,7 @@
     <string name="new_keywords">Generate new keywords</string>
     <string name="title_activity_new_message">Send a new message</string>
     <string name="send_message">Send</string>
+    <string name="homescreen_item_name">Name</string>
+    <string name="homescreen_item_email">Email</string>
 
 </resources>

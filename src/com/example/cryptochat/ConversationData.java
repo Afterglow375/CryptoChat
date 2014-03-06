@@ -2,8 +2,6 @@ package com.example.cryptochat;
 
 import java.util.ArrayList;
 
-
-
 public class ConversationData {
 	public Contact contact;
 	public ArrayList<Message> messages;

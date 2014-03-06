@@ -1,18 +1,16 @@
 package com.example.cryptochat;
 import java.util.ArrayList;
 
-
-
-public class HomescreenData {
+public class HomeScreenData {
 	public ArrayList<ConversationData> conversations;
-	private static HomescreenData instance = null;
+	private static HomeScreenData instance = null;
 	
-	protected HomescreenData(){
+	protected HomeScreenData(){
 		this.conversations = new ArrayList<ConversationData>();
 	}
-	public static HomescreenData getInstance(){
+	public static HomeScreenData getInstance(){
 		if(instance == null){
-			instance = new HomescreenData();
+			instance = new HomeScreenData();
 		}
 		return instance;
 	}

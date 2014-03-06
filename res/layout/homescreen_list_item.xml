@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?><RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" 
+    android:layout_height="match_parent"
     android:padding="8dp">
 
     <TextView
-        android:id="@+id/sampleText"
+        android:id="@+id/homescreen_item_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:text="@string/sample" />
+        android:text="@string/homescreen_item_name" />
+
+    <TextView
+        android:id="@+id/homescreen_item_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/homescreen_item_name"
+        android:text="@string/homescreen_item_email" />
 
 </RelativeLayout>
