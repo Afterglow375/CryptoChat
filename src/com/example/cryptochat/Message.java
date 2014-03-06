@@ -1,8 +1,6 @@
 package com.example.cryptochat;
 import java.util.Calendar;
 
-
-
 public class Message {
 	Contact sender;
 	String text;
