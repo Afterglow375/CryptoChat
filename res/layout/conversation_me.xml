@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="8dp" >
+
+    <TextView
+        android:id="@+id/conversation_me_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/conversation_me_name"
+        android:layout_alignBottom="@+id/conversation_me_name"
+        android:layout_alignParentLeft="true"
+        android:text="@string/conversation_me_message" />
+
+    <TextView
+        android:id="@+id/conversation_me_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:textStyle="bold"
+        android:text="@string/conversation_me" />
+
+    <TextView
+        android:id="@+id/conversation_me_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/conversation_me_name"
+        android:text="@string/conversation_sender_time" />
+
+</RelativeLayout>

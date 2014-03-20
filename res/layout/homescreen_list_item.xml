@@ -7,16 +7,26 @@
         android:id="@+id/homescreen_item_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textStyle="bold"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:text="@string/homescreen_item_name" />
 
     <TextView
-        android:id="@+id/homescreen_item_email"
+        android:id="@+id/homescreen_last_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/homescreen_item_name"
-        android:text="@string/homescreen_item_email" />
+        android:text="@string/homescreen_last_message" />
+
+    <TextView
+        android:id="@+id/homescreen_item_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/homescreen_item_time"
+        android:textStyle="bold" />
 
 </RelativeLayout>

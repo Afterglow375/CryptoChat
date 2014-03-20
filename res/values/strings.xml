@@ -24,6 +24,12 @@
     <string name="title_activity_new_message">Send a new message</string>
     <string name="send_message">Send</string>
     <string name="homescreen_item_name">Name</string>
-    <string name="homescreen_item_email">Email</string>
+    <string name="homescreen_item_time"></string>
+    <string name="conversation_sender_name">Name</string>
+    <string name="conversation_me">Me</string>
+    <string name="conversation_me_message">Message</string>
+    <string name="conversation_sender_message">Message</string>
+    <string name="homescreen_last_message">No Messages</string>
+    <string name="conversation_sender_time">Time</string>
 
 </resources>

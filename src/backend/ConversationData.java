@@ -1,4 +1,4 @@
-package com.example.cryptochat;
+package backend;
 
 import java.util.ArrayList;
 
@@ -12,16 +12,15 @@ public class ConversationData {
 		this.messages = new ArrayList<Message>();
 	}
 	
-	public void AddMessage(Message message){
+	public void addMessage(Message message){
 		messages.add(message);
 	}
 	public Message getLastMessage(){
 		int i = this.messages.size();
 		return this.messages.get(i-1);
 	}
-		
 	
 	public boolean isMessageEmpty(){
-		return (this.messages.size()==0);
+		return (this.messages.isEmpty());
 	}
 }

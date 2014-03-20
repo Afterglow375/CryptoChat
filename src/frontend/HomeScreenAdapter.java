@@ -1,4 +1,6 @@
-package com.example.crypto_app;
+package frontend;
+
+import com.example.crypto_app.R;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,9 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-import com.example.cryptochat.ConversationData;
-import com.example.cryptochat.HomeScreenData;
+import backend.ConversationData;
+import backend.HomeScreenData;
 
 public class HomeScreenAdapter extends ArrayAdapter<ConversationData> {
 	private Context context;
@@ -31,10 +32,7 @@ public class HomeScreenAdapter extends ArrayAdapter<ConversationData> {
 		ConversationData conversation = (ConversationData) getItem(position);
 			
 		TextView name = (TextView) myView.findViewById(R.id.homescreen_item_name);
-		TextView email = (TextView) myView.findViewById(R.id.homescreen_item_email);
-			
 		name.setText(conversation.contact.getName());
-		email.setText(conversation.contact.getEmail());
 		
 		return myView;
 	}

@@ -1,4 +1,6 @@
-package com.example.crypto_app;
+package frontend;
+
+import com.example.crypto_app.R;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -8,10 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import com.example.cryptochat.Contact;
-import com.example.cryptochat.ConversationData;
-import com.example.cryptochat.HomeScreenData;
+import backend.Contact;
+import backend.ConversationData;
+import backend.HomeScreenData;
 
 public class AddContactActivity extends Activity {
 
@@ -56,7 +57,7 @@ public class AddContactActivity extends Activity {
             		byte[] sampleKey = new byte[1];
             		
             		ConversationData conversation = new ConversationData(sampleKey, c);
-            		HomeScreenData.getInstance().addConversation(conversation);
+            		HomeScreenData.getInstance().prependConversation(conversation);
             		// TODO: UPDATE NEW CONTACT IN INTERNAL STORAGE
             		
             		setResult(RESULT_OK, new Intent());

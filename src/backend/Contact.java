@@ -1,4 +1,4 @@
-package com.example.cryptochat;
+package backend;
 
 public class Contact {
 	private String Name;

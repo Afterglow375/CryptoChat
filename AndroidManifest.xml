@@ -14,7 +14,7 @@
         android:label="@string/app_name"
         android:theme="@android:style/Theme.Holo.Light" >
         <activity
-            android:name="com.example.crypto_app.HomeScreenActivity"
+            android:name="frontend.HomeScreenActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,35 +23,35 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.crypto_app.HomeScreenAdapter"
+            android:name="frontend.HomeScreenAdapter"
             android:label="@string/title_activity_home_screen_adapter" >
         </activity>
         <activity
-            android:name="com.example.crypto_app.ConversationActivity"
+            android:name="frontend.ConversationActivity"
             android:label="@string/title_activity_conversation" 
-            android:parentActivityName="com.example.crypto_app.HomeScreenActivity" >
+            android:parentActivityName="frontend.HomeScreenActivity" >
 	        <!-- Parent activity meta-data to support API level 7+ -->
 	        <meta-data
 	            android:name="android.support.PARENT_ACTIVITY"
-	            android:value="com.example.crypto_app.HomeScreenActivity" />
+	            android:value="frontend.HomeScreenActivity" />
         </activity>
         <activity
-            android:name="com.example.crypto_app.AddContactActivity"
+            android:name="frontend.AddContactActivity"
             android:label="@string/title_activity_add_contact" 
-            android:parentActivityName="com.example.crypto_app.HomeScreenActivity" >
+            android:parentActivityName="frontend.HomeScreenActivity" >
 	        <!-- Parent activity meta-data to support API level 7+ -->
 	        <meta-data
 	            android:name="android.support.PARENT_ACTIVITY"
-	            android:value="com.example.crypto_app.HomeScreenActivity" />
+	            android:value="frontend.HomeScreenActivity" />
         </activity>
         <activity
-            android:name="com.example.crypto_app.NewMessageActivity"
+            android:name="frontend.NewMessageActivity"
             android:label="@string/title_activity_new_message" 
-	        android:parentActivityName="com.example.crypto_app.ConversationActivity" >
+	        android:parentActivityName="frontend.ConversationActivity" >
 	        <!-- Parent activity meta-data to support API level 7+ -->
 	        <meta-data
 	            android:name="android.support.PARENT_ACTIVITY"
-	            android:value="com.example.crypto_app.ConversationActivity" />
+	            android:value="frontend.ConversationActivity" />
         </activity>
     </application>
 

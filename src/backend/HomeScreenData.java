@@ -1,4 +1,4 @@
-package com.example.cryptochat;
+package backend;
 import java.util.ArrayList;
 
 public class HomeScreenData {
@@ -17,6 +17,9 @@ public class HomeScreenData {
 	public void addConversation(ConversationData c){
 		conversations.add(c);
 	}
+	public void prependConversation(ConversationData c) {
+		conversations.add(0, c);
+	}
 	public void removeConversation(int index){
 		conversations.remove(index);
 	}
@@ -24,6 +27,6 @@ public class HomeScreenData {
 		return conversations.get(index);
 	}
 	public boolean isConversationsEmpty(){
-		return(conversations.size()==0);
+		return(conversations.isEmpty());
 	}
 }

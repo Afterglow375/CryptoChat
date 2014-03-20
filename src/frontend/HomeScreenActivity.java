@@ -1,4 +1,4 @@
-package com.example.crypto_app;
+package frontend;
 
 import android.app.ListActivity;
 import android.content.Intent;
@@ -9,6 +9,8 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.example.crypto_app.R;
 
 public class HomeScreenActivity extends ListActivity {
 	private HomeScreenAdapter adapter;
@@ -31,6 +33,7 @@ public class HomeScreenActivity extends ListActivity {
 		lv.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				Intent myIntent = new Intent(view.getContext(), ConversationActivity.class);
+				myIntent.putExtra("position", position);
 				startActivityForResult(myIntent, SELECT_CONVERSATION);
 			}
 		});
@@ -52,14 +55,16 @@ public class HomeScreenActivity extends ListActivity {
 		final Button search = (Button) findViewById(R.id.search);
 		search.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+            	// TODO: Properly implement the search for contact/conversation
             	Toast.makeText(getApplicationContext(), "Search to be added.", Toast.LENGTH_SHORT).show();  // setTextFilterEnabled
             }
         });
 		
-		// Add new contact button
+		// Settings button
 		final Button settings = (Button) findViewById(R.id.settings);
 		settings.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+            	// TODO: Possibly add settings for the home screen?
             	Toast.makeText(getApplicationContext(), "Settings to be added.", Toast.LENGTH_SHORT).show();
             }
         });
