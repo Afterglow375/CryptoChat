@@ -23,6 +23,9 @@ public class Message {
 			amOrPm = "PM";
 			hour = Integer.toString(this.datetime.hour-12);
 		}
+		else if (this.datetime.hour == 0) {
+			hour = "12";
+		}
 		return hour + ":" + Integer.toString(this.datetime.minute) + " " + amOrPm;
 	}
 }

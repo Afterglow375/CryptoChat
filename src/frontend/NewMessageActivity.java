@@ -47,7 +47,9 @@ public class NewMessageActivity extends Activity {
         		}
             	else {
             		Contact contact = new Contact("Home User", "Home Email");
-            		Message messageToSend = new Message(contact, message.getText().toString(), new Time(Time.getCurrentTimezone()));
+            		Time now = new Time();
+            		now.setToNow();
+            		Message messageToSend = new Message(contact, message.getText().toString(), now);
             		conversation.addMessage(messageToSend);
             		setResult(RESULT_OK, new Intent());
             		finish();
