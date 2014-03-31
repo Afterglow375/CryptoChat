@@ -23,4 +23,7 @@ public class ConversationData {
 	public boolean isMessageEmpty(){
 		return (this.messages.isEmpty());
 	}
+	public Contact getContact(){
+		return this.contact;
+	}
 }

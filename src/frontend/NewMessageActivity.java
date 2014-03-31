@@ -36,9 +36,9 @@ public class NewMessageActivity extends Activity {
 	}
 	
 	public void addListenerOnButton() {
-		// Start new conversation button
-		final Button addContact = (Button) findViewById(R.id.sendMessage);
-		addContact.setOnClickListener(new View.OnClickListener() {
+		// Start sendMessage button
+		final Button sendMessage = (Button) findViewById(R.id.sendMessage);
+		sendMessage.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	// Check for proper input
             	EditText message = (EditText) findViewById(R.id.new_message);
@@ -53,8 +53,22 @@ public class NewMessageActivity extends Activity {
             		conversation.addMessage(messageToSend);
             		setResult(RESULT_OK, new Intent());
             		finish();
+            		//TODO: write a encrypt method for messages.  String encrptedMessage = messageToSend.encrypt();
+            		Intent i = new Intent(Intent.ACTION_SEND);
+            		i.setType("message/rfc822");
+            		i.putExtra(Intent.EXTRA_EMAIL, new String[]{conversation.getContact().getEmail()});
+            		i.putExtra(Intent.EXTRA_SUBJECT, "CryptoChat");
+            		//TODO still need encrypt method i.putExtra(Intent.EXTRA_TEXT, encryptedMessage);
+            		i.putExtra(Intent.EXTRA_TEXT, messageToSend.getMessage()); // for now using normal not encrypted text.
+            		try{
+            			startActivity(Intent.createChooser(i, "Send encrypted message..."));
+            		}
+            		catch(android.content.ActivityNotFoundException e){
+            			Toast.makeText(getApplicationContext(), "No Email apps installed", Toast.LENGTH_SHORT).show();
+            		}
             	}
+              
             }
         });
-	}
+		}
 }

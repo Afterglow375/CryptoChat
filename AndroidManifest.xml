@@ -53,6 +53,15 @@
 	            android:name="android.support.PARENT_ACTIVITY"
 	            android:value="frontend.ConversationActivity" />
         </activity>
+        
+		<activity 
+		    android:name="frontend.MySearchableActivity" >
+	    	<intent-filter>
+	        	<action android:name="android.intent.action.SEARCH" />
+	    	</intent-filter>
+	    	<meta-data android:name="android.app.searchable"
+	               android:resource="@layout/searchable"/>
+		</activity>
     </application>
 
 </manifest>
