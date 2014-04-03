@@ -14,7 +14,7 @@ import com.example.crypto_app.R;
 
 public class ConversationActivity extends ListActivity {
 	private ConversationAdapter adapter;
-	private int conversationPosition = -2;
+	public static int conversationPosition = -2;
 	private static final int NEW_MESSAGE = 0;
 	
 	@Override
@@ -24,15 +24,16 @@ public class ConversationActivity extends ListActivity {
 		
 		// Create a new adapter for the ListView
 		Intent myIntent = getIntent();
-		conversationPosition = myIntent.getIntExtra("position", -1); // FIX THIS AHHHHH
+		if (conversationPosition == -2) {
+			conversationPosition = myIntent.getIntExtra("position", -1);
+		}
 		adapter = new ConversationAdapter(this, conversationPosition);
 		ListView lv = (ListView) findViewById(android.R.id.list);
 		lv.setAdapter(adapter);
 		addListenerOnButton();
 		
 		// Add "Up" navigation
-		ActionBar actionBar = getActionBar();
-		actionBar.setDisplayHomeAsUpEnabled(true);
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 	}
 	
 	public void addListenerOnButton() {
