@@ -29,17 +29,7 @@ public class AddContactActivity extends Activity {
 		
 		addListenerOnButton();
 		keycreator = KeyCreator.getInstance(this);
-		keywords = keycreator.generateWords();
-		TextView word1 = (TextView) findViewById(R.id.createdKeyword1);
-		TextView word2 = (TextView) findViewById(R.id.createdKeyword2);
-		TextView word3 = (TextView) findViewById(R.id.createdKeyword3);
-		TextView word4 = (TextView) findViewById(R.id.createdKeyword4);
-		TextView word5 = (TextView) findViewById(R.id.createdKeyword5);
-		word1.setText(keywords.get(0));
-		word2.setText(keywords.get(1));
-		word3.setText(keywords.get(2));
-		word4.setText(keywords.get(3));
-		word5.setText(keywords.get(4));
+		updateKeywords();
 		
 		// Add "Up" navigation
 		getActionBar().setDisplayHomeAsUpEnabled(true);
@@ -83,5 +73,20 @@ public class AddContactActivity extends Activity {
         		}
             }
         });
+	}
+	
+	// Creates 5 new random keywords
+	public void updateKeywords() {
+		keywords = keycreator.generateWords();
+		TextView word1 = (TextView) findViewById(R.id.createdKeyword1);
+		TextView word2 = (TextView) findViewById(R.id.createdKeyword2);
+		TextView word3 = (TextView) findViewById(R.id.createdKeyword3);
+		TextView word4 = (TextView) findViewById(R.id.createdKeyword4);
+		TextView word5 = (TextView) findViewById(R.id.createdKeyword5);
+		word1.setText(keywords.get(0));
+		word2.setText(keywords.get(1));
+		word3.setText(keywords.get(2));
+		word4.setText(keywords.get(3));
+		word5.setText(keywords.get(4));
 	}
 }
