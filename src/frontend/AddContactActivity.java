@@ -36,11 +36,19 @@ public class AddContactActivity extends Activity {
 	}
 	
 	public void addListenerOnButton() {
+		// Generate new keywords button
+		final Button newKeywords = (Button) findViewById(R.id.newKeywords);
+		newKeywords.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+            	updateKeywords();
+            }
+        });
+		
 		// Start new conversation button
 		final Button addContact = (Button) findViewById(R.id.startConversation);
 		addContact.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-            	// Check for properly inputed values
+            	// Check for properly inputted values
             	EditText editName = (EditText) findViewById(R.id.edit_name);
             	EditText editEmail = (EditText) findViewById(R.id.edit_email);
             	EditText word1 = (EditText) findViewById(R.id.enterKeyword1);
@@ -75,7 +83,7 @@ public class AddContactActivity extends Activity {
         });
 	}
 	
-	// Creates 5 new random keywords
+	// Creates 5 new random keywords and updates on screen
 	public void updateKeywords() {
 		keywords = keycreator.generateWords();
 		TextView word1 = (TextView) findViewById(R.id.createdKeyword1);
