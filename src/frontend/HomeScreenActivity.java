@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -27,8 +27,6 @@ public class HomeScreenActivity extends ListActivity {
 		ListView lv = (ListView) findViewById(android.R.id.list);
 		lv.setAdapter(adapter);
 		
-		//listView.setTextFilterEnabled(true);
-		
 		// Handle ListView item clicks
 		lv.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -43,7 +41,7 @@ public class HomeScreenActivity extends ListActivity {
 	
 	public void addListenersOnButtons() {
 		// Add new contact button
-		final Button addContact = (Button) findViewById(R.id.addContact);
+		final ImageButton addContact = (ImageButton) findViewById(R.id.addContact);
 		addContact.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	Intent myIntent = new Intent(v.getContext(), AddContactActivity.class);
@@ -52,7 +50,7 @@ public class HomeScreenActivity extends ListActivity {
         });
 		
 		// Search button
-		final Button search = (Button) findViewById(R.id.search);
+		final ImageButton search = (ImageButton) findViewById(R.id.search);
 		search.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	// TODO: Properly implement the search for contact/conversation
@@ -61,7 +59,7 @@ public class HomeScreenActivity extends ListActivity {
         });
 		
 		// Settings button
-		final Button settings = (Button) findViewById(R.id.settings);
+		final ImageButton settings = (ImageButton) findViewById(R.id.settings);
 		settings.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	// TODO: Possibly add settings for the home screen?

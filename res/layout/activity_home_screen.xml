@@ -13,30 +13,31 @@
         android:layout_alignParentTop="true" >
     </ListView>
 
-    <Button
+    <ImageButton
         android:id="@+id/addContact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:text="@string/homescreen_add_contact" />
+        android:contentDescription="@string/homescreen_add_contact"
+        android:src="@android:drawable/ic_menu_add" />
 
-    <Button
-        android:id="@+id/search"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/addContact"
-        android:layout_alignBottom="@+id/addContact"
-        android:layout_centerInParent="true"
-        android:text="@string/homescreen_search" />
-
-    <Button
+    <ImageButton
         android:id="@+id/settings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_toRightOf="@+id/search"
-        android:text="@string/homescreen_settings" />
+        android:contentDescription="@string/homescreen_settings"
+        android:src="@android:drawable/ic_menu_manage" />
+
+    <ImageButton
+        android:id="@+id/search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="@string/homescreen_search"
+        android:src="@android:drawable/ic_menu_search" />
 
 </RelativeLayout>
