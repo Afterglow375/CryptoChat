@@ -6,8 +6,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 import backend.Contact;
@@ -37,7 +37,7 @@ public class AddContactActivity extends Activity {
 	
 	public void addListenerOnButton() {
 		// Generate new keywords button
-		final Button newKeywords = (Button) findViewById(R.id.newKeywords);
+		final ImageButton newKeywords = (ImageButton) findViewById(R.id.newKeywords);
 		newKeywords.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	updateKeywords();
@@ -45,7 +45,7 @@ public class AddContactActivity extends Activity {
         });
 		
 		// Start new conversation button
-		final Button addContact = (Button) findViewById(R.id.startConversation);
+		final ImageButton addContact = (ImageButton) findViewById(R.id.startConversation);
 		addContact.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	// Check for properly inputted values

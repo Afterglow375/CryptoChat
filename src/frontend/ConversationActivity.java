@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -37,8 +37,8 @@ public class ConversationActivity extends ListActivity {
 	
 	public void addListenerOnButton() {
 		// Create a new message button
-		final Button addContact = (Button) findViewById(R.id.newMessage);
-		addContact.setOnClickListener(new View.OnClickListener() {
+		final ImageButton newMessage = (ImageButton) findViewById(R.id.newMessage);
+		newMessage.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	Intent myIntent = new Intent(v.getContext(), NewMessageActivity.class);
             	myIntent.putExtra("position", conversationPosition);

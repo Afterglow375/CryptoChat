@@ -1,13 +1,12 @@
 package frontend;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.format.Time;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 import backend.Contact;
 import backend.ConversationData;
@@ -31,13 +30,12 @@ public class NewMessageActivity extends Activity {
 		conversation = HomeScreenData.getInstance().conversations.get(conversationPosition);
 		
 		// Add "Up" navigation
-		ActionBar actionBar = getActionBar();
-	    actionBar.setDisplayHomeAsUpEnabled(true);
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 	}
 	
 	public void addListenerOnButton() {
 		// Start sendMessage button
-		final Button sendMessage = (Button) findViewById(R.id.sendMessage);
+		final ImageButton sendMessage = (ImageButton) findViewById(R.id.sendMessage);
 		sendMessage.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	// Check for proper input
@@ -53,19 +51,19 @@ public class NewMessageActivity extends Activity {
             		conversation.addMessage(messageToSend);
             		setResult(RESULT_OK, new Intent());
             		finish();
-//            		//TODO: write a encrypt method for messages.  String encrptedMessage = messageToSend.encrypt();
-//            		Intent i = new Intent(Intent.ACTION_SEND);
-//            		i.setType("message/rfc822");
-//            		i.putExtra(Intent.EXTRA_EMAIL, new String[]{conversation.getContact().getEmail()});
-//            		i.putExtra(Intent.EXTRA_SUBJECT, "CryptoChat");
-//            		//TODO still need encrypt method i.putExtra(Intent.EXTRA_TEXT, encryptedMessage);
-//            		i.putExtra(Intent.EXTRA_TEXT, messageToSend.getMessage()); // for now using normal not encrypted text.
-//            		try{
-//            			startActivity(Intent.createChooser(i, "Send encrypted message..."));
-//            		}
-//            		catch(android.content.ActivityNotFoundException e){
-//            			Toast.makeText(getApplicationContext(), "No Email apps installed", Toast.LENGTH_SHORT).show();
-//            		}
+            		//TODO: write a encrypt method for messages.  String encrptedMessage = messageToSend.encrypt();
+            		Intent i = new Intent(Intent.ACTION_SEND);
+            		i.setType("message/rfc822");
+            		i.putExtra(Intent.EXTRA_EMAIL, new String[]{conversation.getContact().getEmail()});
+            		i.putExtra(Intent.EXTRA_SUBJECT, "CryptoChat");
+            		//TODO still need encrypt method i.putExtra(Intent.EXTRA_TEXT, encryptedMessage);
+            		i.putExtra(Intent.EXTRA_TEXT, messageToSend.getMessage()); // for now using normal not encrypted text.
+            		try{
+            			startActivity(Intent.createChooser(i, "Send encrypted message..."));
+            		}
+            		catch(android.content.ActivityNotFoundException e){
+            			Toast.makeText(getApplicationContext(), "No Email apps installed", Toast.LENGTH_SHORT).show();
+            		}
             	}
               
             }
