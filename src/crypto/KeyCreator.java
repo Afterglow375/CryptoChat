@@ -11,7 +11,7 @@ import android.content.Context;
 import com.example.crypto_app.R;
 
 public class KeyCreator {
-	public static final int DICT_SIZE = 4937;
+	public static final int DICT_SIZE = 4893;
 	private static KeyCreator instance = null;
 	private ArrayList<String> words = new ArrayList<String>(DICT_SIZE);
 	private ArrayList<String> keywords = new ArrayList<String>(5);
