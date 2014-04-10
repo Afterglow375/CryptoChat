@@ -20,7 +20,7 @@ import crypto.KeyCreator;
 
 public class AddContactActivity extends Activity {
 	private KeyCreator keycreator;
-	private ArrayList<String> keywords = new ArrayList<String>(5);
+	private static ArrayList<String> keywords = new ArrayList<String>(5);
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +67,7 @@ public class AddContactActivity extends Activity {
         			Toast.makeText(getApplicationContext(), "You must enter all 5 words.", Toast.LENGTH_SHORT).show();
         		}
         		else { // Else no errors
+        			updateEnteredKeywords();
         			Contact c = new Contact(editName.getText().toString(), editEmail.getText().toString());
             		
             		// TODO: PROPERLY CREATE THE KEY HERE
@@ -96,5 +97,23 @@ public class AddContactActivity extends Activity {
 		word3.setText(keywords.get(2));
 		word4.setText(keywords.get(3));
 		word5.setText(keywords.get(4));
+	}
+	
+	public void updateEnteredKeywords() {
+		keywords.clear();
+		TextView word1 = (TextView) findViewById(R.id.enterKeyword1);
+		TextView word2 = (TextView) findViewById(R.id.enterKeyword2);
+		TextView word3 = (TextView) findViewById(R.id.enterKeyword3);
+		TextView word4 = (TextView) findViewById(R.id.enterKeyword4);
+		TextView word5 = (TextView) findViewById(R.id.enterKeyword5);
+		keywords.add(word1.getText().toString());
+		keywords.add(word2.getText().toString());
+		keywords.add(word3.getText().toString());
+		keywords.add(word4.getText().toString());
+		keywords.add(word5.getText().toString());
+	}
+	
+	public static ArrayList<String> getEnteredKeywords() {
+		return keywords;
 	}
 }
