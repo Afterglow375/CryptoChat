@@ -1,12 +1,11 @@
 package frontend;
 
-import android.app.ActionBar;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -14,7 +13,7 @@ import com.example.crypto_app.R;
 
 public class ConversationActivity extends ListActivity {
 	private ConversationAdapter adapter;
-	private int conversationPosition;
+	public static int conversationPosition = -2;
 	private static final int NEW_MESSAGE = 0;
 	
 	@Override
@@ -24,21 +23,22 @@ public class ConversationActivity extends ListActivity {
 		
 		// Create a new adapter for the ListView
 		Intent myIntent = getIntent();
-		conversationPosition = myIntent.getIntExtra("position", -1);
+		if (conversationPosition == -2) {
+			conversationPosition = myIntent.getIntExtra("position", -1);
+		}
 		adapter = new ConversationAdapter(this, conversationPosition);
 		ListView lv = (ListView) findViewById(android.R.id.list);
 		lv.setAdapter(adapter);
 		addListenerOnButton();
 		
 		// Add "Up" navigation
-		ActionBar actionBar = getActionBar();
-		actionBar.setDisplayHomeAsUpEnabled(true);
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 	}
 	
 	public void addListenerOnButton() {
 		// Create a new message button
-		final Button addContact = (Button) findViewById(R.id.newMessage);
-		addContact.setOnClickListener(new View.OnClickListener() {
+		final ImageButton newMessage = (ImageButton) findViewById(R.id.newMessage);
+		newMessage.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	Intent myIntent = new Intent(v.getContext(), NewMessageActivity.class);
             	myIntent.putExtra("position", conversationPosition);

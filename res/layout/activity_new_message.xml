@@ -4,14 +4,6 @@
     android:layout_height="match_parent"
     tools:context=".NewMessageActivity" >
 
-    <Button
-        android:id="@+id/sendMessage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="@string/send_message" />
-
     <EditText
         android:id="@+id/new_message"
         android:layout_width="wrap_content"
@@ -26,5 +18,15 @@
 
         <requestFocus />
     </EditText>
+
+    <ImageButton
+        android:id="@+id/sendMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:contentDescription="@string/send_message"
+        android:src="@android:drawable/ic_menu_send" />
 
 </RelativeLayout>

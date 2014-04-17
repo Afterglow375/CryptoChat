@@ -12,14 +12,15 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true" >
     </ListView>
-    
-    <Button
+
+    <ImageButton
         android:id="@+id/newMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="@string/conversation_newmessage" />
-
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:contentDescription="@string/conversation_newmessage"
+        android:src="@android:drawable/ic_menu_add" />
    
 </RelativeLayout>

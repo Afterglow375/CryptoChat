@@ -233,24 +233,25 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="24dp"
         android:text="@string/name" />
-
-    <Button
+    
+    <ImageButton
         android:id="@+id/newKeywords"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignTop="@+id/startConversation"
-        android:layout_toLeftOf="@+id/TextView06"
-        android:text="@string/new_keywords" />
+        android:layout_toLeftOf="@+id/startConversation"
+        android:contentDescription="@string/new_keywords"
+        android:src="@android:drawable/ic_menu_edit" />
 
-    <Button
+    <ImageButton
         android:id="@+id/startConversation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/TextView06"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_toRightOf="@+id/newKeywords"
-        android:text="@string/start_conv_button" />
+        android:contentDescription="@string/start_conv_button"
+        android:src="@android:drawable/ic_menu_send" />
 
 </RelativeLayout>

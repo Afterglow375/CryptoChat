@@ -19,6 +19,7 @@ public class Message {
 	public String getTime(){
 		String amOrPm = "AM";
 		String hour = Integer.toString(this.datetime.hour);
+		String minutes = Integer.toString(this.datetime.minute);
 		if (this.datetime.hour > 12) {
 			amOrPm = "PM";
 			hour = Integer.toString(this.datetime.hour-12);
@@ -26,6 +27,9 @@ public class Message {
 		else if (this.datetime.hour == 0) {
 			hour = "12";
 		}
-		return hour + ":" + Integer.toString(this.datetime.minute) + " " + amOrPm;
+		if (this.datetime.minute < 10) {
+			minutes = "0" + minutes;
+		}
+		return hour + ":" + minutes + " " + amOrPm;
 	}
 }

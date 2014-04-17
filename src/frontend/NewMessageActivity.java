@@ -1,13 +1,24 @@
 package frontend;
 
-import android.app.ActionBar;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.format.Time;
+import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 import backend.Contact;
 import backend.ConversationData;
@@ -29,15 +40,18 @@ public class NewMessageActivity extends Activity {
 		Intent myIntent = getIntent();
 		conversationPosition = myIntent.getIntExtra("position", -1);
 		conversation = HomeScreenData.getInstance().conversations.get(conversationPosition);
-		
+	    
 		// Add "Up" navigation
-		ActionBar actionBar = getActionBar();
-	    actionBar.setDisplayHomeAsUpEnabled(true);
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 	}
 	
+	
+		
+	
+
 	public void addListenerOnButton() {
 		// Start sendMessage button
-		final Button sendMessage = (Button) findViewById(R.id.sendMessage);
+		final ImageButton sendMessage = (ImageButton) findViewById(R.id.sendMessage);
 		sendMessage.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	// Check for proper input
@@ -53,13 +67,67 @@ public class NewMessageActivity extends Activity {
             		conversation.addMessage(messageToSend);
             		setResult(RESULT_OK, new Intent());
             		finish();
+            		//get proper key for encryption from file
+            		// also reads contactInfo from file
+            		/*
+            		try {
+            	        InputStream inputStream = openFileInput(conversation.getContact().getName()+"key");
+            	        String Name;
+        	            String Email;
+        	            byte[] k = null;
+        	            int numberofbytesinkey = 256; //need to figure out how many bytes in key
+            	        if (inputStream != null) {
+            	            inputStream.read(k, 0, numberofbytesinkey); //sets k = to the byte[] representing the key
+            	            inputStream.close();
+            	        }
+            	        inputStream = openFileInput(conversation.getContact().getName());
+            	        if(inputStream != null){
+            	        	BufferedReader buf = new BufferedReader(new InputStreamReader(inputStream));
+            	        	Name = buf.readLine();
+            	        	Email = buf.readLine();
+            	        	inputStream.close();
+            	        }
+            	    } catch (FileNotFoundException e) {
+            	        Log.i("File not found", e.toString());
+            	    } catch (IOException e) {
+            	        Log.i("Can not read file:", e.toString());
+            	    }
+            	*/
+            	
+            		
+            		
+            		String filename = "encryptedMessage"; //set filename
+            		FileOutputStream os;		//declare outputstreams
+            		try {
+            		  os = openFileOutput(filename, Context.MODE_WORLD_READABLE);
+            		  os.write(conversation.getContact().getName().getBytes());
+            		  os.write("/n".getBytes());
+            		  os.write(conversation.getContact().getEmail().getBytes());
+            		  os.write("\n".getBytes());
+            		  os.write(messageToSend.getMessage().getBytes());//needs to be changed to encrypted message
+            		  os.close();
+            		} 
+            		catch (Exception e) {
+            		  e.printStackTrace();
+            		}
+            		File file = new File(getFilesDir(), filename);
+            		if (!file.exists())
+                    {
+                        file.mkdirs();
+                    }         
             		//TODO: write a encrypt method for messages.  String encrptedMessage = messageToSend.encrypt();
             		Intent i = new Intent(Intent.ACTION_SEND);
             		i.setType("message/rfc822");
             		i.putExtra(Intent.EXTRA_EMAIL, new String[]{conversation.getContact().getEmail()});
             		i.putExtra(Intent.EXTRA_SUBJECT, "CryptoChat");
             		//TODO still need encrypt method i.putExtra(Intent.EXTRA_TEXT, encryptedMessage);
-            		i.putExtra(Intent.EXTRA_TEXT, messageToSend.getMessage()); // for now using normal not encrypted text.
+            		i.putExtra(Intent.EXTRA_TEXT, "Share the attachment with the cryptochat app"); // info about what to do when email is received
+            		Uri uri;
+            	    file.setReadable(true, false);
+            	    file.setWritable(true, false);
+            	    uri = Uri.fromFile(file);
+            	    i.putExtra(Intent.EXTRA_STREAM, uri);
+
             		try{
             			startActivity(Intent.createChooser(i, "Send encrypted message..."));
             		}
@@ -72,3 +140,4 @@ public class NewMessageActivity extends Activity {
         });
 		}
 }
+
