@@ -92,15 +92,12 @@ public class NewMessageActivity extends Activity {
             	        Log.i("Can not read file:", e.toString());
             	    }
             	*/
-            	
-            		
-            		
-            		String filename = "encryptedMessage"; //set filename
             		FileOutputStream os;		//declare outputstreams
+            		String filename = "encyptedMessage"; //set filename
             		try {
             		  os = openFileOutput(filename, Context.MODE_WORLD_READABLE);
             		  os.write(conversation.getContact().getName().getBytes());
-            		  os.write("/n".getBytes());
+            		  os.write("\n".getBytes());
             		  os.write(conversation.getContact().getEmail().getBytes());
             		  os.write("\n".getBytes());
             		  os.write(messageToSend.getMessage().getBytes());//needs to be changed to encrypted message
@@ -109,11 +106,13 @@ public class NewMessageActivity extends Activity {
             		catch (Exception e) {
             		  e.printStackTrace();
             		}
-            		File file = new File(getFilesDir(), filename);
-            		if (!file.exists())
+            		File textfile = new File(getFilesDir(), filename);
+            		if (!textfile.exists())
                     {
-                        file.mkdirs();
-                    }         
+                        textfile.mkdirs();
+                    }  
+                    
+                    
             		//TODO: write a encrypt method for messages.  String encrptedMessage = messageToSend.encrypt();
             		Intent i = new Intent(Intent.ACTION_SEND);
             		i.setType("message/rfc822");
@@ -122,9 +121,9 @@ public class NewMessageActivity extends Activity {
             		//TODO still need encrypt method i.putExtra(Intent.EXTRA_TEXT, encryptedMessage);
             		i.putExtra(Intent.EXTRA_TEXT, "Share the attachment with the cryptochat app"); // info about what to do when email is received
             		Uri uri;
-            	    file.setReadable(true, false);
-            	    file.setWritable(true, false);
-            	    uri = Uri.fromFile(file);
+            	    textfile.setReadable(true, false);
+					textfile.setWritable(true, false);
+            	    uri = Uri.fromFile(textfile);
             	    i.putExtra(Intent.EXTRA_STREAM, uri);
 
             		try{
@@ -138,5 +137,5 @@ public class NewMessageActivity extends Activity {
             }
         });
 		}
+	
 }
-
