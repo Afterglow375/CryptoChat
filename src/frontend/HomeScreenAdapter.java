@@ -32,7 +32,9 @@ public class HomeScreenAdapter extends ArrayAdapter<ConversationData> {
 		ConversationData conversation = (ConversationData) getItem(position);
 			
 		TextView name = (TextView) myView.findViewById(R.id.homescreen_item_name);
+		TextView lastMessage = (TextView) myView.findViewById(R.id.homescreen_last_message);
 		name.setText(conversation.contact.getName());
+		lastMessage.setText(conversation.getLastMessage());
 		
 		return myView;
 	}

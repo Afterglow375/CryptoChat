@@ -15,9 +15,13 @@ public class ConversationData {
 	public void addMessage(Message message){
 		messages.add(message);
 	}
-	public Message getLastMessage(){
-		int i = this.messages.size();
-		return this.messages.get(i-1);
+	public String getLastMessage() {
+		if (messages.size() == 0) {
+			return "No Messages";
+		}
+		else {
+			return messages.get(messages.size()-1).getMessage();
+		}
 	}
 	
 	public boolean isMessageEmpty(){
