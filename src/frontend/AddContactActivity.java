@@ -41,6 +41,7 @@ public class AddContactActivity extends Activity {
 		final ImageButton newKeywords = (ImageButton) findViewById(R.id.newKeywords);
 		newKeywords.setOnClickListener(new View.OnClickListener() {
 <<<<<<< HEAD
+<<<<<<< HEAD
           public void onClick(View v) {
           	updateKeywords();
           }
@@ -53,6 +54,8 @@ public class AddContactActivity extends Activity {
 			
           public void onClick(View v) {
 =======
+=======
+>>>>>>> FETCH_HEAD
             public void onClick(View v) {
             	updateKeywords();
             }
@@ -63,6 +66,9 @@ public class AddContactActivity extends Activity {
 		addContact.setOnClickListener(new View.OnClickListener() {
             
         public void onClick(View v) {
+<<<<<<< HEAD
+>>>>>>> FETCH_HEAD
+=======
 >>>>>>> FETCH_HEAD
           	// Check for properly inputted values
           	EditText editName = (EditText) findViewById(R.id.edit_name);
@@ -123,9 +129,12 @@ public class AddContactActivity extends Activity {
 	}
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 
            
 	
+=======
+>>>>>>> FETCH_HEAD
 =======
 >>>>>>> FETCH_HEAD
 	// Creates 5 new random keywords and updates on screen

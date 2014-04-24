@@ -128,8 +128,12 @@ public class NewMessageActivity extends Activity {
             }
         });
 <<<<<<< HEAD
+<<<<<<< HEAD
 		}
 	
+=======
+	}
+>>>>>>> FETCH_HEAD
 =======
 	}
 >>>>>>> FETCH_HEAD
