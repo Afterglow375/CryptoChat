@@ -23,6 +23,7 @@ public class AddContactActivity extends Activity {
 	private KeyCreator keycreator;
 	private static ArrayList<String> keywords = new ArrayList<String>(5);
 
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -40,8 +41,6 @@ public class AddContactActivity extends Activity {
 		// Generate new keywords button
 		final ImageButton newKeywords = (ImageButton) findViewById(R.id.newKeywords);
 		newKeywords.setOnClickListener(new View.OnClickListener() {
-<<<<<<< HEAD
-<<<<<<< HEAD
           public void onClick(View v) {
           	updateKeywords();
           }
@@ -53,23 +52,6 @@ public class AddContactActivity extends Activity {
 		addContact.setOnClickListener(new View.OnClickListener() {
 			
           public void onClick(View v) {
-=======
-=======
->>>>>>> FETCH_HEAD
-            public void onClick(View v) {
-            	updateKeywords();
-            }
-        });
-
-		// Start new conversation button
-		final ImageButton addContact = (ImageButton) findViewById(R.id.startConversation);
-		addContact.setOnClickListener(new View.OnClickListener() {
-            
-        public void onClick(View v) {
-<<<<<<< HEAD
->>>>>>> FETCH_HEAD
-=======
->>>>>>> FETCH_HEAD
           	// Check for properly inputted values
           	EditText editName = (EditText) findViewById(R.id.edit_name);
           	EditText editEmail = (EditText) findViewById(R.id.edit_email);
@@ -128,15 +110,9 @@ public class AddContactActivity extends Activity {
       });
 	}
 	
-<<<<<<< HEAD
-<<<<<<< HEAD
 
            
 	
-=======
->>>>>>> FETCH_HEAD
-=======
->>>>>>> FETCH_HEAD
 	// Creates 5 new random keywords and updates on screen
 	public void updateKeywords() {
 		keywords = keycreator.generateWords();

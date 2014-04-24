@@ -1,15 +1,20 @@
 package frontend;
 
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.format.Time;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -38,6 +43,10 @@ public class NewMessageActivity extends Activity {
 		// Add "Up" navigation
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 	}
+	
+	
+		
+	
 
 	public void addListenerOnButton() {
 		// Start sendMessage button
@@ -127,14 +136,6 @@ public class NewMessageActivity extends Activity {
               
             }
         });
-<<<<<<< HEAD
-<<<<<<< HEAD
 		}
 	
-=======
-	}
->>>>>>> FETCH_HEAD
-=======
-	}
->>>>>>> FETCH_HEAD
 }
