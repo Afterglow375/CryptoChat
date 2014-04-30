@@ -2,11 +2,13 @@ package backend;
 
 import java.util.ArrayList;
 
+import javax.crypto.spec.SecretKeySpec;
+
 public class ConversationData {
 	public Contact contact;
 	public ArrayList<Message> messages;
-	public byte[] key;
-	public ConversationData(byte[] k, Contact c){
+	public SecretKeySpec key;
+	public ConversationData(SecretKeySpec k, Contact c){
 		this.contact=c;
 		this.key=k;
 		this.messages = new ArrayList<Message>();

@@ -1,9 +1,10 @@
 package frontend;
 
-//import java.io.FileOutputStream;
 import java.util.ArrayList;
+
+import javax.crypto.spec.SecretKeySpec;
+
 import android.app.Activity;
-//import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -23,7 +24,6 @@ public class AddContactActivity extends Activity {
 	private KeyCreator keycreator;
 	private static ArrayList<String> keywords = new ArrayList<String>(5);
 
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -41,12 +41,11 @@ public class AddContactActivity extends Activity {
 		// Generate new keywords button
 		final ImageButton newKeywords = (ImageButton) findViewById(R.id.newKeywords);
 		newKeywords.setOnClickListener(new View.OnClickListener() {
-          public void onClick(View v) {
-          	updateKeywords();
-          }
-      });
+			public void onClick(View v) {
+          		updateKeywords();
+          	}
+		});
 	
-		
 		// Start new conversation button
 		final ImageButton addContact = (ImageButton) findViewById(R.id.startConversation);
 		addContact.setOnClickListener(new View.OnClickListener() {
@@ -73,11 +72,11 @@ public class AddContactActivity extends Activity {
       		else { // Else no errors
       			Contact c = new Contact(editName.getText().toString(), editEmail.getText().toString());
           		
-          		// TODO: PROPERLY CREATE THE KEY HERE
-          		byte[] sampleKey = new byte[1];
-          		
-          		ConversationData conversation = new ConversationData(sampleKey, c);
+      			// Create the key and add it to the data structure
+      			SecretKeySpec key = keycreator.createKey();
+          		ConversationData conversation = new ConversationData(key, c);
           		HomeScreenData.getInstance().prependConversation(conversation);
+          		
           		// TODO: UPDATE NEW CONTACT IN INTERNAL STORAGE
           		// Save conversation in internal storage with the file name being the name of the contact.
           		// key is saved int file named contactnamekey
@@ -102,17 +101,13 @@ public class AddContactActivity extends Activity {
           		}
           		*/
 
-
           		setResult(RESULT_OK, new Intent());
               	finish();
       		}
           }
       });
 	}
-	
 
-           
-	
 	// Creates 5 new random keywords and updates on screen
 	public void updateKeywords() {
 		keywords = keycreator.generateWords();
