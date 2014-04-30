@@ -71,7 +71,7 @@ public class HomeScreenActivity extends ListActivity {
 		search.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	// TODO: Properly implement the search for contact/conversation
-            	Toast.makeText(getApplicationContext(), "Search to be added.", Toast.LENGTH_SHORT).show();  // setTextFilterEnabled
+            	Toast.makeText(getApplicationContext(), "Search to be added.", Toast.LENGTH_SHORT).show();  
             }
         });
 		
@@ -98,74 +98,74 @@ public class HomeScreenActivity extends ListActivity {
 		}
 	}
 	
-		//Do stuff with the attachment that was shared in.
-		private void handleSendattachment(Intent myIntent) {
-			File file = new File(((Uri) myIntent.getParcelableExtra(Intent.EXTRA_STREAM)).getPath());
-			String file_string ="";
-			String name ="";
-			String email ="";
-		    if (file != null) {
-		        try {
-					InputStream is= openFileInput(file.getPath());
-					byte[] attach = null;
-					is.read(attach);
-					is.close();
-					boolean firstline = true;
-					boolean secondline= true;
-					for(int i = 0; i < attach.length; i++){
-						if( firstline){
-							if ((attach[i]) + attach[i+1]+"" =="/n"){
-								firstline=false; 
-							}
-							name += (char)attach[i];
+	// Do stuff with the attachment that was shared in.
+	private void handleSendattachment(Intent myIntent) {
+		File file = new File(((Uri) myIntent.getParcelableExtra(Intent.EXTRA_STREAM)).getPath());
+		String file_string ="";
+		String name ="";
+		String email ="";
+	    if (file != null) {
+	        try {
+				InputStream is= openFileInput(file.getPath());
+				byte[] attach = null;
+				is.read(attach);
+				is.close();
+				boolean firstline = true;
+				boolean secondline= true;
+				for(int i = 0; i < attach.length; i++){
+					if( firstline){
+						if ((attach[i]) + attach[i+1]+"" =="/n"){
+							firstline=false; 
 						}
-						else if(secondline){
-							if ((attach[i] + attach[i+1])+"" =="/n"){
-									secondline=false;
-							}
-							email+=(char)attach[i];
-						}
-						else{
-					     file_string += (char)attach[i];
-						}
+						name += (char)attach[i];
 					}
-					Contact contact = new Contact(name, email);
-		    		Time n = new Time();
-		    		n.setToNow();
-		    		//TODO write decrypte method and decrypte file_string
-		    		Message messageToAttach = new Message(contact, file_string, n);
-		    		HomeScreenData homescreendata= HomeScreenData.getInstance();
-		    		ConversationData conversation;
-		    		for (int k=0; k<homescreendata.conversations.size(); k++){
-		    			if(name == homescreendata.conversations.get(k).getContact().getName()){
-		    				conversation = homescreendata.conversations.get(k);
-		    				conversation.addMessage(messageToAttach);
-		    				k = homescreendata.conversations.size();
-		    			}
-		    		}
-		        }
-		        catch (FileNotFoundException e) {
-					e.printStackTrace();
+					else if(secondline){
+						if ((attach[i] + attach[i+1])+"" =="/n"){
+								secondline=false;
+						}
+						email+=(char)attach[i];
+					}
+					else{
+				     file_string += (char)attach[i];
+					}
 				}
-		        catch (IOException e) {
-					e.printStackTrace();
-				} 
-		    }
-		    Contact contact = new Contact(name, email);
-			Time n = new Time();
-			n.setToNow();
-			//TODO write decrypte method and decrypte file_string
-			Message messageToAttach = new Message(contact, file_string, n);
-			HomeScreenData homescreendata= HomeScreenData.getInstance();
-			ConversationData conversation;
-			for (int k=0; k<homescreendata.conversations.size(); k++){
-				if(name.equals(homescreendata.conversations.get(k).getContact().getName())){
-					conversation = homescreendata.conversations.get(k);
-					conversation.addMessage(messageToAttach);
-					k = homescreendata.conversations.size();
-				}
+				Contact contact = new Contact(name, email);
+	    		Time n = new Time();
+	    		n.setToNow();
+	    		//TODO write decrypte method and decrypte file_string
+	    		Message messageToAttach = new Message(contact, file_string, n);
+	    		HomeScreenData homescreendata= HomeScreenData.getInstance();
+	    		ConversationData conversation;
+	    		for (int k=0; k<homescreendata.conversations.size(); k++){
+	    			if(name == homescreendata.conversations.get(k).getContact().getName()){
+	    				conversation = homescreendata.conversations.get(k);
+	    				conversation.addMessage(messageToAttach);
+	    				k = homescreendata.conversations.size();
+	    			}
+	    		}
+	        }
+	        catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
+	        catch (IOException e) {
+				e.printStackTrace();
+			} 
+	    }
+	    Contact contact = new Contact(name, email);
+		Time n = new Time();
+		n.setToNow();
+		//TODO write decrypte method and decrypte file_string
+		Message messageToAttach = new Message(contact, file_string, n);
+		HomeScreenData homescreendata= HomeScreenData.getInstance();
+		ConversationData conversation;
+		for (int k=0; k<homescreendata.conversations.size(); k++){
+			if(name.equals(homescreendata.conversations.get(k).getContact().getName())){
+				conversation = homescreendata.conversations.get(k);
+				conversation.addMessage(messageToAttach);
+				k = homescreendata.conversations.size();
 			}
 		}
 	}
+}
 
 
