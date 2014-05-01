@@ -49,7 +49,6 @@ public class AddContactActivity extends Activity {
 		// Start new conversation button
 		final ImageButton addContact = (ImageButton) findViewById(R.id.startConversation);
 		addContact.setOnClickListener(new View.OnClickListener() {
-			
           public void onClick(View v) {
           	// Check for properly inputted values
           	EditText editName = (EditText) findViewById(R.id.edit_name);
@@ -59,6 +58,7 @@ public class AddContactActivity extends Activity {
           	EditText word3 = (EditText) findViewById(R.id.enterKeyword3);
           	EditText word4 = (EditText) findViewById(R.id.enterKeyword4);
           	EditText word5 = (EditText) findViewById(R.id.enterKeyword5);
+          	
           	if (editName.getText().toString().equals("")) {
       			Toast.makeText(getApplicationContext(), "You must specify the contact's name.", Toast.LENGTH_SHORT).show();
       		}

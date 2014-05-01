@@ -69,7 +69,7 @@ public class KeyCreator {
 		// Compute the key, k = k*n + a
 		BigInteger key = BigInteger.valueOf(0);
 		for (int i = 0; i<10; i++) {
-			key = key.multiply(BigInteger.valueOf(organizedKeywordIndices.get(i))).add(BigInteger.valueOf(createdKeywordIndices.get(i)));
+			key = key.multiply(BigInteger.valueOf(DICT_SIZE)).add(BigInteger.valueOf(organizedKeywordIndices.get(i)));
 		}
 		return new SecretKeySpec(key.toByteArray(), "AES");
 	}
