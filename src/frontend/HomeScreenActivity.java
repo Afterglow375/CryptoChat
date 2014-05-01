@@ -51,7 +51,6 @@ public class HomeScreenActivity extends ListActivity {
 				startActivityForResult(myIntent, SELECT_CONVERSATION);
 			}
 		});
-		
 		addListenersOnButtons();
 	    }
 	}
