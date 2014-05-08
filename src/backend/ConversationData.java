@@ -32,4 +32,8 @@ public class ConversationData {
 	public Contact getContact(){
 		return this.contact;
 	}
+
+	public SecretKeySpec getKey() {
+		return this.key;
+	}
 }

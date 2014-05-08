@@ -3,6 +3,7 @@ package frontend;
 import java.util.ArrayList;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,22 +60,31 @@ public class ConversationAdapter extends ArrayAdapter<Message> {
 		}
 
 		Message message = (Message) getItem(position);
+		Log.w("myApp", "p"+position);
 		if (type == TYPE_SENDER) { // Set text fields for sender's message
+			Log.w("myApp", "4441");
 			TextView name = (TextView) myView.findViewById(R.id.conversation_sender_name);
+			Log.w("myApp", "4442");
 			TextView strMessage = (TextView) myView.findViewById(R.id.conversation_sender_message);
+			Log.w("myApp", "4443");
 			TextView time = (TextView) myView.findViewById(R.id.conversation_sender_time);
-			
-			strMessage.setText(message.text);
+			Log.w("myApp", "4444 " +message.getMessage());
+			strMessage.setText(message.getMessage());
+			Log.w("myApp", "4445");
 			name.setText(message.sender.getName());
+			Log.w("myApp", "4446");
 			time.setText(message.getTime());
+			Log.w("myApp", "4447");
+
 		}
 		else { // Or set text fields for home user sent message
 			TextView strMessage = (TextView) myView.findViewById(R.id.conversation_me_message);
 			TextView time = (TextView) myView.findViewById(R.id.conversation_me_time);
-			
-			strMessage.setText(message.text);
+			Log.w("myApp", "p"+message.getMessage());
+			strMessage.setText(message.getMessage());
 			time.setText(message.getTime());
 		}
+		Log.w("myApp", "done?"+message.getMessage());
 		return myView;
 	}
 }

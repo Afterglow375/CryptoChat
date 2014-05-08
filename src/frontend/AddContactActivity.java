@@ -73,7 +73,8 @@ public class AddContactActivity extends Activity {
       			Contact c = new Contact(editName.getText().toString(), editEmail.getText().toString());
           		
       			// Create the key and add it to the data structure
-      			SecretKeySpec key = keycreator.createKey();
+      			//SecretKeySpec key = keycreator.createKey();
+      			SecretKeySpec key = new SecretKeySpec("wow".toString().getBytes(), "pow");
           		ConversationData conversation = new ConversationData(key, c);
           		HomeScreenData.getInstance().prependConversation(conversation);
           		

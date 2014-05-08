@@ -9,6 +9,7 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
+
 import com.example.crypto_app.R;
 
 public class ConversationActivity extends ListActivity {
@@ -20,7 +21,6 @@ public class ConversationActivity extends ListActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_conversation);
-		
 		// Create a new adapter for the ListView
 		Intent myIntent = getIntent();
 		if (conversationPosition == -2) {
@@ -30,7 +30,6 @@ public class ConversationActivity extends ListActivity {
 		ListView lv = (ListView) findViewById(android.R.id.list);
 		lv.setAdapter(adapter);
 		addListenerOnButton();
-		
 		// Add "Up" navigation
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 	}
@@ -63,4 +62,5 @@ public class ConversationActivity extends ListActivity {
 		getMenuInflater().inflate(R.menu.new_message, menu);
 		return true;
 	}
+
 }

@@ -1,15 +1,16 @@
 package frontend;
 
+import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.InputStream;
-
+import java.io.InputStreamReader;
+import javax.crypto.spec.SecretKeySpec;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.format.Time;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -17,32 +18,31 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 import backend.Contact;
-import backend.ConversationData;
 import backend.HomeScreenData;
 import backend.Message;
-
 import com.example.crypto_app.R;
+import crypto.Decrypt;
 
 public class HomeScreenActivity extends ListActivity {
 	private HomeScreenAdapter adapter;
 	private static final int SELECT_CONVERSATION = 0;
 	private static final int ADD_CONTACT = 1;
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Intent myIntent=getIntent();
+		String action = myIntent.getAction();
+	    if (Intent.ACTION_VIEW.equals(action)) {
+	    	handleSendattachment(myIntent); 
+	    }
+	    
 		setContentView(R.layout.activity_home_screen);
 		
 		// Create a new adapter for the ListView
 		adapter = new HomeScreenAdapter(this);
 		ListView lv = (ListView) findViewById(android.R.id.list);
 		lv.setAdapter(adapter);
-		Intent myIntent=getIntent();
-		String action = myIntent.getAction();
-	    if (Intent.ACTION_SEND.equals(action)) {
-	    	handleSendattachment(myIntent); 
-	    }
-	    else{
+		
 		// Handle ListView item clicks
 		lv.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -51,9 +51,8 @@ public class HomeScreenActivity extends ListActivity {
 				startActivityForResult(myIntent, SELECT_CONVERSATION);
 			}
 		});
-		
 		addListenersOnButtons();
-	    }
+	    
 	}
 	
 	public void addListenersOnButtons() {
@@ -99,73 +98,52 @@ public class HomeScreenActivity extends ListActivity {
 	}
 	
 	// Do stuff with the attachment that was shared in.
+	
 	private void handleSendattachment(Intent myIntent) {
-		File file = new File(((Uri) myIntent.getParcelableExtra(Intent.EXTRA_STREAM)).getPath());
-		String file_string ="";
+		Log.w("myApp", "in send attch");
+		Uri u = myIntent.getData();
+		File file = new File(getFilesDir(), u.getPath());
+		String decryptedMessage ="";
 		String name ="";
 		String email ="";
-	    if (file != null) {
-	        try {
-				InputStream is= openFileInput(file.getPath());
-				byte[] attach = null;
-				is.read(attach);
-				is.close();
-				boolean firstline = true;
-				boolean secondline= true;
-				for(int i = 0; i < attach.length; i++){
-					if( firstline){
-						if ((attach[i]) + attach[i+1]+"" =="/n"){
-							firstline=false; 
-						}
-						name += (char)attach[i];
-					}
-					else if(secondline){
-						if ((attach[i] + attach[i+1])+"" =="/n"){
-								secondline=false;
-						}
-						email+=(char)attach[i];
-					}
-					else{
-				     file_string += (char)attach[i];
-					}
+		String encryptedText = "";
+		if (!file.exists())
+        {
+			Log.w("myApp", "333");
+            file.mkdirs();
+        } 
+		if (file != null) {
+			try{
+				InputStream is= this.getBaseContext().getContentResolver().openInputStream(u);
+				BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+				name = reader.readLine();
+				email = reader.readLine();
+				String line = reader.readLine();;
+				while (line != null){
+					encryptedText = encryptedText+ ""+line;
+					line=reader.readLine();
 				}
-				Contact contact = new Contact(name, email);
-	    		Time n = new Time();
-	    		n.setToNow();
-	    		//TODO write decrypte method and decrypte file_string
-	    		Message messageToAttach = new Message(contact, file_string, n);
-	    		HomeScreenData homescreendata= HomeScreenData.getInstance();
-	    		ConversationData conversation;
-	    		for (int k=0; k<homescreendata.conversations.size(); k++){
-	    			if(name == homescreendata.conversations.get(k).getContact().getName()){
-	    				conversation = homescreendata.conversations.get(k);
-	    				conversation.addMessage(messageToAttach);
-	    				k = homescreendata.conversations.size();
-	    			}
-	    		}
-	        }
-	        catch (FileNotFoundException e) {
-				e.printStackTrace();
+				reader.close();
+				is.close();
+			}catch(Exception e){
+				Log.w("myApp", "error somethigns wrong");
 			}
-	        catch (IOException e) {
-				e.printStackTrace();
-			} 
-	    }
-	    Contact contact = new Contact(name, email);
-		Time n = new Time();
-		n.setToNow();
-		//TODO write decrypte method and decrypte file_string
-		Message messageToAttach = new Message(contact, file_string, n);
-		HomeScreenData homescreendata= HomeScreenData.getInstance();
-		ConversationData conversation;
-		for (int k=0; k<homescreendata.conversations.size(); k++){
-			if(name.equals(homescreendata.conversations.get(k).getContact().getName())){
-				conversation = homescreendata.conversations.get(k);
-				conversation.addMessage(messageToAttach);
-				k = homescreendata.conversations.size();
-			}
+            Log.w("myApp", "2 "+encryptedText);
+            Contact contact = new Contact(name, email);
+            Time n = new Time();
+            n.setToNow();	
+            HomeScreenData homescreendata= HomeScreenData.getInstance();
+            for (int k=0; k<homescreendata.conversations.size(); k++){
+            	if(name.equals(homescreendata.conversations.get(k).getContact().getName())){
+            		SecretKeySpec key = homescreendata.conversations.get(k).getKey();
+            		decryptedMessage = Decrypt.decryptEmailAttachment(key, encryptedText.getBytes());
+            		Message messageToAttach = new Message(contact, decryptedMessage, n);
+            		homescreendata.conversations.get(k).addMessage(messageToAttach);
+            		k = homescreendata.conversations.size();
+            	}
+            }
+            Log.w("myApp", "end of handleattachment");
 		}
+	
 	}
 }
-
-

@@ -6,14 +6,12 @@ import java.io.InputStreamReader;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 import java.util.ArrayList;
-
+import java.util.Locale;
 import javax.crypto.spec.SecretKeySpec;
-
 import android.content.Context;
-
 import com.example.crypto_app.R;
-
 import frontend.AddContactActivity;
+
 
 public class KeyCreator {
 	public static final int DICT_SIZE = 4893;
@@ -76,8 +74,9 @@ public class KeyCreator {
 	
 	private ArrayList<Integer> organizeKeywordIndices() {
 		enteredKeywordIndices.clear();
+		
 		for (int i = 0; i < 5; i++) {
-			String keyword = keywords.get(i).toLowerCase().trim();
+			String keyword = keywords.get(i).toLowerCase(Locale.US).trim();
 			enteredKeywordIndices.add(words.indexOf(keyword));
 		}
 	

@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.format.Time;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -20,6 +21,8 @@ import backend.HomeScreenData;
 import backend.Message;
 
 import com.example.crypto_app.R;
+
+import crypto.Encrypt;
 
 public class NewMessageActivity extends Activity {
 	private int conversationPosition;
@@ -55,43 +58,18 @@ public class NewMessageActivity extends Activity {
             		now.setToNow();
             		Message messageToSend = new Message(contact, message.getText().toString(), now);
             		conversation.addMessage(messageToSend);
-            		setResult(RESULT_OK, new Intent());
-            		finish();
-            		//get proper key for encryption from file
-            		// also reads contactInfo from file
-            		/*
-            		try {
-            	        InputStream inputStream = openFileInput(conversation.getContact().getName()+"key");
-            	        String Name;
-        	            String Email;
-        	            byte[] k = null;
-        	            int numberofbytesinkey = 256; //need to figure out how many bytes in key
-            	        if (inputStream != null) {
-            	            inputStream.read(k, 0, numberofbytesinkey); //sets k = to the byte[] representing the key
-            	            inputStream.close();
-            	        }
-            	        inputStream = openFileInput(conversation.getContact().getName());
-            	        if(inputStream != null){
-            	        	BufferedReader buf = new BufferedReader(new InputStreamReader(inputStream));
-            	        	Name = buf.readLine();
-            	        	Email = buf.readLine();
-            	        	inputStream.close();
-            	        }
-            	    } catch (FileNotFoundException e) {
-            	        Log.i("File not found", e.toString());
-            	    } catch (IOException e) {
-            	        Log.i("Can not read file:", e.toString());
-            	    }
-            	*/
+
             		FileOutputStream os;		//declare outputstreams
             		String filename = "encyptedMessage"; //set filename
             		try {
+            		  Log.w("myApp", "221 "+filename);
             		  os = openFileOutput(filename, Context.MODE_WORLD_READABLE);
             		  os.write(conversation.getContact().getName().getBytes());
             		  os.write("\n".getBytes());
             		  os.write(conversation.getContact().getEmail().getBytes());
             		  os.write("\n".getBytes());
-            		  os.write(messageToSend.getMessage().getBytes());//needs to be changed to encrypted message
+            		  Log.w("myApp", "pre encypt "+message.getText().toString());
+            		  os.write(Encrypt.EncryptMessage(message.getText().toString().getBytes(), conversation.getKey()));//needs to be changed to encrypted message
             		  os.close();
             		} 
             		catch (Exception e) {
@@ -100,16 +78,15 @@ public class NewMessageActivity extends Activity {
             		File textfile = new File(getFilesDir(), filename);
             		if (!textfile.exists())
                     {
+            			Log.w("myApp", "222");
                         textfile.mkdirs();
-                    }  
+                    } 
                     
-                    
-            		//TODO: write a encrypt method for messages.  String encrptedMessage = messageToSend.encrypt();
+            		
             		Intent i = new Intent(Intent.ACTION_SEND);
             		i.setType("message/rfc822");
             		i.putExtra(Intent.EXTRA_EMAIL, new String[]{conversation.getContact().getEmail()});
             		i.putExtra(Intent.EXTRA_SUBJECT, "CryptoChat");
-            		//TODO still need encrypt method i.putExtra(Intent.EXTRA_TEXT, encryptedMessage);
             		i.putExtra(Intent.EXTRA_TEXT, "Share the attachment with the cryptochat app"); // info about what to do when email is received
             		Uri uri;
             	    textfile.setReadable(true, false);
@@ -124,9 +101,10 @@ public class NewMessageActivity extends Activity {
             			Toast.makeText(getApplicationContext(), "No Email apps installed", Toast.LENGTH_SHORT).show();
             		}
             	}
-              
+            	setResult(RESULT_OK, new Intent());
+        		finish();
             }
         });
+		
 		}
-	
 }
