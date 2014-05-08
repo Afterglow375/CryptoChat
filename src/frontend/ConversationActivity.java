@@ -30,6 +30,13 @@ public class ConversationActivity extends ListActivity {
 		ListView lv = (ListView) findViewById(android.R.id.list);
 		lv.setAdapter(adapter);
 		addListenerOnButton();
+<<<<<<< HEAD
+=======
+		
+		// Scroll to the bottom
+		lv.setSelection(adapter.getCount() - 1);
+		
+>>>>>>> FETCH_HEAD
 		// Add "Up" navigation
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 	}
@@ -52,6 +59,8 @@ public class ConversationActivity extends ListActivity {
 			if (resultCode == RESULT_OK) {
 				adapter.notifyDataSetChanged();
 				Toast.makeText(getApplicationContext(), "Message sent.", Toast.LENGTH_SHORT).show();
+				ListView lv = (ListView) findViewById(android.R.id.list);
+				lv.setSelection(adapter.getCount() - 1);
 			}
 		}
 	}

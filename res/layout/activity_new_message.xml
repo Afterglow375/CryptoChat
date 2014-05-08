@@ -1,14 +1,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".NewMessageActivity" >
 
     <EditText
         android:id="@+id/new_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/sendMessage"
+        android:layout_above="@+id/relativeLayout"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
@@ -19,14 +19,24 @@
         <requestFocus />
     </EditText>
 
-    <ImageButton
-        android:id="@+id/sendMessage"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:contentDescription="@string/send_message"
-        android:src="@android:drawable/ic_menu_send" />
+        android:background="#FF888888" >
+
+        <ImageButton
+            android:id="@+id/sendMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/send_message"
+            android:padding="5dp"
+            android:src="@android:drawable/ic_menu_send" />
+    </RelativeLayout>
 
 </RelativeLayout>
