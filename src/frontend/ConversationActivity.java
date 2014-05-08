@@ -30,13 +30,11 @@ public class ConversationActivity extends ListActivity {
 		ListView lv = (ListView) findViewById(android.R.id.list);
 		lv.setAdapter(adapter);
 		addListenerOnButton();
-<<<<<<< HEAD
-=======
 		
 		// Scroll to the bottom
 		lv.setSelection(adapter.getCount() - 1);
 		
->>>>>>> FETCH_HEAD
+
 		// Add "Up" navigation
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 	}
